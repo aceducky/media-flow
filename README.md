@@ -1,6 +1,5 @@
-Funny and wholesome memes page using react and api calls.
+MediaFlow - Reddit Media Explorer
 <br>
-Live site: https://aceducky.github.io/meme-page
+Live site: https://aceducky.github.io/media-flow/
 
-
-Meme api: https://github.com/D3vd/Meme_Api
+A React based single page application that consumes public API to fetch and dynamically render trending media feeds from Reddit.
