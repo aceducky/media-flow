@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import "./App.css";
+import { useState, useEffect } from "preact/hooks";
 
-const App = () => {
+export const App = () => {
   const [meme, setMeme] = useState({
     author: "",
     title: "",
@@ -21,17 +20,15 @@ const App = () => {
     let random_subreddit =
       subreddits[Math.floor(Math.random() * subreddits.length)];
 
-    // Reset states for new image
     setImageLoaded(false);
     setImageLoadingFailed(false);
     setIsLoading(true);
 
     try {
       const response = await fetch(base_url + random_subreddit);
-      if (response.status === 200) {
-        setIsSuccess(true);
-      } else {
+      if (response.status !== 200) {
         setIsSuccess(false);
+        return;
       }
 
       const data = await response.json();
@@ -62,7 +59,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div class="App">
       <h3>Title: {meme.title}</h3>
       <div id="img-container">
         <img
@@ -86,7 +83,6 @@ const App = () => {
         }}
         onClick={fetchMeme}
       >
-        {/* let's not disable the button*/}
         {getStatusMessage()}
       </button>
       {!isLoading && !isSuccess && (
